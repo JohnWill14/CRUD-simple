@@ -5,8 +5,10 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.bean.Categoria;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -19,11 +21,21 @@ public class CategoriaDaoTest {
     }
 
     @Test
+    @Ignore//Ignora um metodo
     public void inserir() {
         Categoria cat=new Categoria("Roupas");
         CategoriaDao dao=new CategoriaDao();
         boolean s=dao.save(cat);
         if(!s)Assert.fail("Deu ruim");
+    }
+    @Test
+    public void listar(){
+        CategoriaDao dao=new CategoriaDao();
+        List<Categoria> categorias=dao.findAll();
+        for(Categoria c:categorias){
+            System.out.println("\nID: "+c.getId());
+            System.out.println("Nome: "+c.getNome());
+        }
     }
     
 }
