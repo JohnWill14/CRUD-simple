@@ -29,6 +29,15 @@ public class CategoriaDaoTest {
         if(!s)Assert.fail("Deu ruim");
     }
     @Test
+    public void atualiza() {
+        Categoria cat=new Categoria("Chocolate");
+        cat.setId(1);
+        CategoriaDao dao=new CategoriaDao();
+        boolean s=dao.update(cat);
+        if(!s)Assert.fail("Deu ruim");
+        else System.out.println("OK");
+    }
+    @Test
     public void listar(){
         CategoriaDao dao=new CategoriaDao();
         List<Categoria> categorias=dao.findAll();

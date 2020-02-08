@@ -51,6 +51,26 @@ public class CategoriaDao {
         }
         
     }
+    public boolean update(Categoria categoria){
+        String sql="update categoria "
+                + "set nome=? "
+                + "where "
+                + "id=?;";
+        PreparedStatement stm=null;
+        try {
+            stm=this.con.prepareStatement(sql);
+            stm.setString(1, categoria.getNome());
+            stm.setInt(2, categoria.getId());
+            stm.execute();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao salvar\n=>"+ex);
+            return false;
+        }finally{
+            ConectionFactory.closeConection(con, stm);
+        }
+        
+    }
     public List<Categoria> findAll(){
          String sql="select * from categoria; ";
         PreparedStatement stm=null;
