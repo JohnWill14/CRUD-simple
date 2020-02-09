@@ -5,6 +5,7 @@
  */
 package gui.janelas;
 
+import gui.TelaPrincipal;
 import javax.swing.JFrame;
 import org.junit.Test;
 import static org.junit.Assert.*;

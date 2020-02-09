@@ -5,8 +5,11 @@
  */
 package teste.gui;
 
-import gui.janelas.TelaPrincipal;
+import gui.TelaPrincipal;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -14,26 +17,22 @@ import javax.swing.JFrame;
  */
 public class Tela {
     public static void main(String[] args) {
+        lookTest();
         TelaPrincipal tela=new TelaPrincipal();
+        tela.setSize(592, 594);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.setVisible(true);
     }
     private static void lookTest(){
-        try {  
+        try {
 //            BasicLookAndFeel darcula=new com.bulenkov.darcula.DarculaLaf();
-//            javax.swing.UIManager.setLookAndFeel(darcula.getName());
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                System.out.println(info.getName());
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-
-              
+            javax.swing.UIManager.setLookAndFeel(new com.bulenkov.darcula.DarculaLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
+            System.out.println(ex.getMessage());
+        }
+        catch(ExceptionInInitializerError ex){
+            System.out.println("Erro inicializar => "+ex.getMessage());
             
-          } catch (Exception erro) {  
-            erro.printStackTrace();  
-          }  
+        }
     }
 }

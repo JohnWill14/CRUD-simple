@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.janelas;
+package gui;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -42,9 +42,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(504, 566));
-        setMinimumSize(new java.awt.Dimension(504, 566));
-        setPreferredSize(new java.awt.Dimension(504, 566));
+        setMaximumSize(new java.awt.Dimension(592, 544));
+        setMinimumSize(new java.awt.Dimension(592, 544));
+        setPreferredSize(new java.awt.Dimension(592, 544));
         setResizable(false);
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -54,20 +54,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jToolBar1.setPreferredSize(new java.awt.Dimension(100, 60));
 
         CategoriaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/categoria.png"))); // NOI18N
-        CategoriaButton.setBorder(null);
+        CategoriaButton.setText("  Categoria  ");
         CategoriaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CategoriaButton.setFocusable(false);
         CategoriaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        CategoriaButton.setLabel("Categoria");
         CategoriaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        CategoriaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CategoriaButtonActionPerformed(evt);
+            }
+        });
         jToolBar1.add(CategoriaButton);
 
         ProdutoCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/produto.png"))); // NOI18N
-        ProdutoCategoria.setBorder(null);
+        ProdutoCategoria.setText("  Produto  ");
         ProdutoCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ProdutoCategoria.setFocusable(false);
         ProdutoCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ProdutoCategoria.setLabel("Produto");
         ProdutoCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(ProdutoCategoria);
 
@@ -82,22 +85,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                .addGap(65, 65, 65))
+                .addContainerGap()
+                .addComponent(planoDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(planoDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+            .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
         );
 
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CategoriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaButtonActionPerformed
+        // TODO add your handling code here:
+        telaCategoria=new gui.janelas.Categoria();
+        telaCategoria.setSize(396, 463);
+        desktop.add(telaCategoria);
+        telaCategoria.setVisible(true);
+    }//GEN-LAST:event_CategoriaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,7 +141,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-
+    private gui.janelas.Categoria telaCategoria;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CategoriaButton;
     private javax.swing.JButton ProdutoCategoria;
