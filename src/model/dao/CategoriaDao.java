@@ -22,17 +22,18 @@ import model.bean.Categoria;
  */
 public class CategoriaDao {
     private Connection con;
-    {
+    
+    public CategoriaDao() {
+    }
+    public void criaConexao(){
         try {
             con=ConectionFactory.getConnection();
         } catch (SQLException ex) {
             System.err.println("Erro ao inicializar Conexao:\n=>"+ex);
         }
     }
-    public CategoriaDao() {
-    }
-    
     public boolean save(Categoria categoria){
+        this.criaConexao();
         String sql="Insert into categoria "
                 + "(nome) "
                 + "values"
@@ -52,6 +53,7 @@ public class CategoriaDao {
         
     }
     public boolean update(Categoria categoria){
+        this.criaConexao();
         String sql="update categoria "
                 + "set nome=? "
                 + "where "
@@ -72,6 +74,7 @@ public class CategoriaDao {
         
     }
     public List<Categoria> findAll(){
+        this.criaConexao();
          String sql="select * from categoria; ";
         PreparedStatement stm=null;
         ResultSet rs=null;
@@ -95,5 +98,39 @@ public class CategoriaDao {
             ConectionFactory.closeConection(con, stm,rs);
         }
     }
-    
+    public Categoria find(int id){
+        this.criaConexao();
+         String sql="select * from categoria where id=?; ";
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        
+        try {
+            stm=this.con.prepareStatement(sql);
+            stm.setInt(1, id);
+            rs=stm.executeQuery();
+            Categoria cat;
+            rs.next();
+            cat=new Categoria();
+            cat.setId(rs.getInt("id"));
+            cat.setNome(rs.getString("nome"));
+                
+            ConectionFactory.closeConection(con, stm,rs);
+            return cat;
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao buscar\n=>"+ex);
+            
+        }
+    }
+    public void deletar(int i){
+        this.criaConexao();
+        String sql="delete from categoria where id=?; ";
+        PreparedStatement stm=null;
+        try {
+            stm=con.prepareStatement(sql);
+            stm.setInt(1, i);
+            stm.execute();
+        } catch (SQLException ex) {
+            System.err.println("Erro deletar: "+ex);
+        }
+    }
 }

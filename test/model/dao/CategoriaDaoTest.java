@@ -21,7 +21,7 @@ public class CategoriaDaoTest {
     }
 
     @Test
-    @Ignore//Ignora um metodo
+  //  @Ignore//Ignora um metodo
     public void inserir() {
         Categoria cat=new Categoria("Roupas");
         CategoriaDao dao=new CategoriaDao();
@@ -38,6 +38,16 @@ public class CategoriaDaoTest {
         else System.out.println("OK");
     }
     @Test
+    public void deleta() {
+        
+        CategoriaDao dao=new CategoriaDao();
+        try{
+            dao.deletar(1);
+        }catch(Exception ex){
+            System.out.println("Não foi possivel excluir: "+ex);
+        }
+    }
+    @Test
     public void listar(){
         CategoriaDao dao=new CategoriaDao();
         List<Categoria> categorias=dao.findAll();
@@ -45,6 +55,12 @@ public class CategoriaDaoTest {
             System.out.println("\nID: "+c.getId());
             System.out.println("Nome: "+c.getNome());
         }
+    }
+    @Test
+    public void busca(){
+        CategoriaDao dao=new CategoriaDao();
+        Categoria bean=dao.find(2);
+        System.out.println(bean.getId()+" "+bean.getNome());
     }
     
 }
