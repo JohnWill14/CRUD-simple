@@ -38,6 +38,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ProdutoCategoria = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         planoDeFundo = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        itemSair = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -97,10 +100,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
+            .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
         );
 
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
+
+        jMenu1.setText("Opções");
+
+        itemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/cancelar.png"))); // NOI18N
+        itemSair.setText("Sair");
+        itemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemSair);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,6 +139,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         desktop.add(telaProduto);
         telaProduto.setVisible(true);
     }//GEN-LAST:event_ProdutoCategoriaActionPerformed
+
+    private void itemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_itemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +185,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton CategoriaButton;
     private javax.swing.JButton ProdutoCategoria;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenuItem itemSair;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel planoDeFundo;

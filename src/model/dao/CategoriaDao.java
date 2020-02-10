@@ -99,6 +99,34 @@ public class CategoriaDao {
             ConectionFactory.closeConection(con, stm,rs);
         }
     }
+    public List<Categoria> findAll(String str){
+        this.criaConexao();
+         String sql="select * from categoria "
+                 + "where "
+                 + "nome like ?; ";
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        List<Categoria> lista=new ArrayList<>();
+        
+        try {
+            stm=this.con.prepareStatement(sql);
+            stm.setString(1, "%"+str+"%");
+            rs=stm.executeQuery();
+            Categoria cat;
+            while(rs.next()){
+                cat=new Categoria();
+                cat.setId(rs.getInt("id"));
+                cat.setNome(rs.getString("nome"));
+                lista.add(cat);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            System.err.println("Erro ao salvar\n=>"+ex);
+            return null;
+        }finally{
+            ConectionFactory.closeConection(con, stm,rs);
+        }
+    }
     public Categoria find(int id){
         this.criaConexao();
          String sql="select * from categoria where id=?; ";

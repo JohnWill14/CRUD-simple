@@ -36,11 +36,6 @@ public class Produto extends javax.swing.JInternalFrame {
 
         js = new javax.swing.JScrollPane();
         tabelaCategoria = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        novoButton = new javax.swing.JButton();
-        salvarButton = new javax.swing.JButton();
-        excluirButton = new javax.swing.JButton();
-        sairButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         iDLabel = new javax.swing.JLabel();
         idText = new javax.swing.JTextField();
@@ -53,8 +48,14 @@ public class Produto extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         valorText = new javax.swing.JTextField();
         limparButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        novoButton = new javax.swing.JButton();
+        salvarButton = new javax.swing.JButton();
+        excluirButton = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         js1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
+        textText = new javax.swing.JTextField();
 
         tabelaCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,47 +80,6 @@ public class Produto extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Produto");
-
-        novoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/novo.png"))); // NOI18N
-        novoButton.setText("Novo");
-        novoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        novoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(novoButton);
-
-        salvarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/salvar.png"))); // NOI18N
-        salvarButton.setText("Salvar");
-        salvarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salvarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(salvarButton);
-
-        excluirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/excluir.png"))); // NOI18N
-        excluirButton.setText("Excluir");
-        excluirButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        excluirButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(excluirButton);
-
-        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/cancelar.png"))); // NOI18N
-        sairButton.setText("Sair");
-        sairButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        sairButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        sairButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(sairButton);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Formulário"));
         jPanel2.setLayout(null);
@@ -173,6 +133,47 @@ public class Produto extends javax.swing.JInternalFrame {
         jPanel2.add(limparButton);
         limparButton.setBounds(300, 10, 78, 31);
 
+        novoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/novo.png"))); // NOI18N
+        novoButton.setText("Novo");
+        novoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        novoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novoButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(novoButton);
+
+        salvarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/salvar.png"))); // NOI18N
+        salvarButton.setText("Salvar");
+        salvarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salvarButton);
+
+        excluirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/excluir.png"))); // NOI18N
+        excluirButton.setText("Excluir");
+        excluirButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(excluirButton);
+
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/cancelar.png"))); // NOI18N
+        sairButton.setText("Sair");
+        sairButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sairButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sairButton);
+
         tabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Teste", "Teste"}
@@ -193,6 +194,12 @@ public class Produto extends javax.swing.JInternalFrame {
         });
         js1.setViewportView(tabelaProduto);
 
+        textText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textTextKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,15 +211,20 @@ public class Produto extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(js1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(textText, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(textText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(js1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -273,6 +285,12 @@ public class Produto extends javax.swing.JInternalFrame {
         completaTabela();
     }//GEN-LAST:event_limparButtonActionPerformed
 
+    private void textTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTextKeyReleased
+        // TODO add your handling code here:
+        completaTabela(textText.getText());
+        limpaCampo();
+    }//GEN-LAST:event_textTextKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboCategoria;
@@ -295,6 +313,7 @@ public class Produto extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner spinnerQtd;
     private javax.swing.JTable tabelaCategoria;
     private javax.swing.JTable tabelaProduto;
+    private javax.swing.JTextField textText;
     private javax.swing.JTextField valorText;
     // End of variables declaration//GEN-END:variables
     private List<model.bean.Categoria> listaCategoria;
@@ -332,7 +351,18 @@ public class Produto extends javax.swing.JInternalFrame {
     private void completaTabela(){
         limpaTabela();
         listaCategoria=catDao.findAll();
-        listaProduto=proDao.listar();
+        listaProduto=proDao.findAll();
+        for(model.bean.Produto pro:listaProduto){
+            modelTable.addRow(new Object[]{
+                pro.getId(),pro.getNome(),pro.getCategoria().getNome(),
+                String.format("%.2f", pro.getValor()),pro.getQuantidade(),pro.getCategoria().getId()
+            });
+        }
+    }
+    private void completaTabela(String str){
+        limpaTabela();
+        listaCategoria=catDao.findAll();
+        listaProduto=proDao.findAll(str);
         for(model.bean.Produto pro:listaProduto){
             modelTable.addRow(new Object[]{
                 pro.getId(),pro.getNome(),pro.getCategoria().getNome(),
@@ -428,7 +458,7 @@ public class Produto extends javax.swing.JInternalFrame {
             return;
         }
          try {
-             proDao.excluir(pro.getId());
+             proDao.deletar(pro.getId());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Nao foi possivel excluir:\n");
         }

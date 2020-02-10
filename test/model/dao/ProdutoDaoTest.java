@@ -45,7 +45,7 @@ public class ProdutoDaoTest {
     public void listar() {
         Categoria cat=new Categoria();
         ProdutoDao dao=new ProdutoDao();
-        List<Produto> lista= dao.listar();
+        List<Produto> lista= dao.findAll();
         for(Produto p:lista){
             System.out.println("=====================");
             System.out.println("Nome "+p.getNome());
@@ -59,7 +59,7 @@ public class ProdutoDaoTest {
     public void buscar() {
         Categoria cat=new Categoria();
         ProdutoDao dao=new ProdutoDao();
-        Produto p= (Produto) dao.buscar(14);
+        Produto p= (Produto) dao.find(14);
         System.out.println("=====================");
         System.out.println("Nome "+p.getNome());
         System.out.println("Qtd "+p.getQuantidade());
@@ -71,6 +71,6 @@ public class ProdutoDaoTest {
     public void excluir() {
         Categoria cat=new Categoria();
         ProdutoDao dao=new ProdutoDao();
-        dao.excluir(14);
+        dao.deletar(14);
     }
 }

@@ -33,20 +33,21 @@ public class Categoria extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        novoButton = new javax.swing.JButton();
-        salvarButton = new javax.swing.JButton();
-        excluirButton = new javax.swing.JButton();
-        sairButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         iDLabel = new javax.swing.JLabel();
         idText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         nomeText = new javax.swing.JTextField();
         limparButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        novoButton = new javax.swing.JButton();
+        salvarButton = new javax.swing.JButton();
+        excluirButton = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         js = new javax.swing.JScrollPane();
         tabelaCategoria = new javax.swing.JTable();
+        textText = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -54,6 +55,41 @@ public class Categoria extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(396, 463));
         setMinimumSize(new java.awt.Dimension(396, 463));
         getContentPane().setLayout(null);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Formulário"));
+        jPanel2.setLayout(null);
+
+        iDLabel.setText("ID");
+        jPanel2.add(iDLabel);
+        iDLabel.setBounds(30, 20, 14, 15);
+
+        idText.setEditable(false);
+        jPanel2.add(idText);
+        idText.setBounds(110, 20, 70, 23);
+
+        jLabel1.setText("Nome");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(20, 60, 40, 15);
+
+        nomeText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeTextActionPerformed(evt);
+            }
+        });
+        jPanel2.add(nomeText);
+        nomeText.setBounds(110, 60, 140, 23);
+
+        limparButton.setText("Limpar");
+        limparButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(limparButton);
+        limparButton.setBounds(290, 10, 78, 31);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 60, 390, 130);
 
         novoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/novo.png"))); // NOI18N
         novoButton.setText("Novo");
@@ -99,41 +135,6 @@ public class Categoria extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 10, 400, 60);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Formulário"));
-        jPanel2.setLayout(null);
-
-        iDLabel.setText("ID");
-        jPanel2.add(iDLabel);
-        iDLabel.setBounds(30, 20, 14, 15);
-
-        idText.setEditable(false);
-        jPanel2.add(idText);
-        idText.setBounds(110, 20, 70, 23);
-
-        jLabel1.setText("Nome");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(20, 60, 40, 15);
-
-        nomeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeTextActionPerformed(evt);
-            }
-        });
-        jPanel2.add(nomeText);
-        nomeText.setBounds(110, 60, 140, 23);
-
-        limparButton.setText("Limpar");
-        limparButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limparButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(limparButton);
-        limparButton.setBounds(290, 10, 78, 31);
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 80, 390, 130);
-
         jPanel3.setLayout(new java.awt.CardLayout());
 
         tabelaCategoria.setModel(new javax.swing.table.DefaultTableModel(
@@ -160,6 +161,14 @@ public class Categoria extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 230, 400, 210);
+
+        textText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textTextKeyReleased(evt);
+            }
+        });
+        getContentPane().add(textText);
+        textText.setBounds(0, 200, 270, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,6 +216,12 @@ public class Categoria extends javax.swing.JInternalFrame {
         completaTabela();
     }//GEN-LAST:event_limparButtonActionPerformed
 
+    private void textTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTextKeyReleased
+        // TODO add your handling code here:
+        completaTabela(textText.getText());
+        limpaCampo();
+    }//GEN-LAST:event_textTextKeyReleased
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton excluirButton;
@@ -223,6 +238,7 @@ public class Categoria extends javax.swing.JInternalFrame {
     private javax.swing.JButton sairButton;
     private javax.swing.JButton salvarButton;
     private javax.swing.JTable tabelaCategoria;
+    private javax.swing.JTextField textText;
     // End of variables declaration//GEN-END:variables
     public List<model.bean.Categoria> listaCategoria;
     public CategoriaDao catDao;
@@ -241,6 +257,15 @@ public class Categoria extends javax.swing.JInternalFrame {
     public void completaTabela(){
         limpaTabela();
         listaCategoria=catDao.findAll();
+        for(model.bean.Categoria cat:listaCategoria){
+            modelTable.addRow(new Object[]{
+                cat.getId(),cat.getNome()
+            });
+        }
+    }
+    public void completaTabela(String str){
+        limpaTabela();
+        listaCategoria=catDao.findAll(str);
         for(model.bean.Categoria cat:listaCategoria){
             modelTable.addRow(new Object[]{
                 cat.getId(),cat.getNome()

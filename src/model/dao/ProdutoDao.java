@@ -83,7 +83,7 @@ public class ProdutoDao {
         }
         
     }
-    public List<Produto> listar(){
+    public List<Produto> findAll(){
         this.criaConexao();
         String sql="select * from "
                 + "produto "
@@ -113,7 +113,40 @@ public class ProdutoDao {
             
         }
     }
-    public Produto buscar( int id){
+    public List<Produto> findAll(String str){
+        this.criaConexao();
+        String sql="select * from "
+                + "produto "
+                + "inner join categoria on categoria.id=produto.categoria "
+                + "where "
+                + "produto.nome like ?";
+        PreparedStatement stm=null;
+        ResultSet rs=null;
+        ArrayList<Produto> produtos=new ArrayList<>();
+        try {
+            stm=con.prepareStatement(sql);
+            stm.setString(1, "%"+str+"%");
+            rs=stm.executeQuery();
+            CategoriaDao catDao=new CategoriaDao();
+            Produto bean;
+            while(rs.next()){
+                bean=new Produto();
+                bean.setId(rs.getInt("id"));
+                bean.setNome(rs.getString("nome"));
+                bean.setQuantidade(rs.getInt("qtd"));
+                bean.setValor(rs.getDouble("valor"));
+                Categoria cat=catDao.find(rs.getInt("categoria"));
+                bean.setCategoria(cat);
+                produtos.add(bean);
+            }
+            ConectionFactory.closeConection(con, stm, rs);
+            return produtos;
+        } catch (SQLException ex) {
+            throw new RuntimeException("Listar: "+ex);
+            
+        }
+    }
+    public Produto find( int id){
         this.criaConexao();
         String sql="select * from "
                 + "produto "
@@ -146,7 +179,7 @@ public class ProdutoDao {
             
         }
     }
-    public void excluir(int id){
+    public void deletar(int id){
         this.criaConexao();
         String sql="delete from produto "
                 + "where "
