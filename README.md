@@ -63,7 +63,7 @@ está no arquivo <i>"descompila.sql"</i>.
 <p>
     E com o seguinte método deixei o tema todo escuro:
 </p>
-``` java
+```JAVA
  private static void lookTest(){
         try {
             javax.swing.UIManager.setLookAndFeel(new com.bulenkov.darcula.DarculaLaf());
