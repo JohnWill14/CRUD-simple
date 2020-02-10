@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.bean.Categoria;
 
 /**
@@ -130,7 +131,7 @@ public class CategoriaDao {
             stm.setInt(1, i);
             stm.execute();
         } catch (SQLException ex) {
-            System.err.println("Erro deletar: "+ex);
+            throw new RuntimeException("Erro deletar: "+ex);
         }
     }
 }

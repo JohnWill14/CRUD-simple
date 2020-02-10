@@ -42,6 +42,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CRUD simples");
         setMaximumSize(new java.awt.Dimension(592, 544));
         setMinimumSize(new java.awt.Dimension(592, 544));
         setPreferredSize(new java.awt.Dimension(592, 544));
@@ -72,6 +73,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ProdutoCategoria.setFocusable(false);
         ProdutoCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ProdutoCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ProdutoCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProdutoCategoriaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(ProdutoCategoria);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
@@ -86,12 +92,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(planoDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+                .addContainerGap())
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+            .addComponent(planoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
         );
 
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
@@ -106,6 +112,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         desktop.add(telaCategoria);
         telaCategoria.setVisible(true);
     }//GEN-LAST:event_CategoriaButtonActionPerformed
+
+    private void ProdutoCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoCategoriaActionPerformed
+        // TODO add your handling code here:
+        
+        telaProduto=new gui.janelas.Produto();
+        telaProduto.setSize(396, 463);
+        desktop.add(telaProduto);
+        telaProduto.setVisible(true);
+    }//GEN-LAST:event_ProdutoCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +156,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    private gui.janelas.Produto telaProduto;
     private gui.janelas.Categoria telaCategoria;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CategoriaButton;

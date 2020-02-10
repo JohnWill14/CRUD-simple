@@ -43,6 +43,7 @@ public class Categoria extends javax.swing.JInternalFrame {
         idText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         nomeText = new javax.swing.JTextField();
+        limparButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         js = new javax.swing.JScrollPane();
         tabelaCategoria = new javax.swing.JTable();
@@ -56,6 +57,7 @@ public class Categoria extends javax.swing.JInternalFrame {
 
         novoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/novo.png"))); // NOI18N
         novoButton.setText("Novo");
+        novoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         novoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 novoButtonActionPerformed(evt);
@@ -65,6 +67,7 @@ public class Categoria extends javax.swing.JInternalFrame {
 
         salvarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/salvar.png"))); // NOI18N
         salvarButton.setText("Salvar");
+        salvarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salvarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarButtonActionPerformed(evt);
@@ -74,10 +77,17 @@ public class Categoria extends javax.swing.JInternalFrame {
 
         excluirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/excluir.png"))); // NOI18N
         excluirButton.setText("Excluir");
+        excluirButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(excluirButton);
 
         sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/midia/img/cancelar.png"))); // NOI18N
         sairButton.setText("Sair");
+        sairButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sairButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +121,15 @@ public class Categoria extends javax.swing.JInternalFrame {
         });
         jPanel2.add(nomeText);
         nomeText.setBounds(110, 60, 140, 23);
+
+        limparButton.setText("Limpar");
+        limparButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(limparButton);
+        limparButton.setBounds(290, 10, 78, 31);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 80, 390, 130);
@@ -176,6 +195,18 @@ public class Categoria extends javax.swing.JInternalFrame {
         limpaCampo();
     }//GEN-LAST:event_novoButtonActionPerformed
 
+    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
+        // TODO add your handling code here:
+        excCategoria();
+        limpaCampo();
+    }//GEN-LAST:event_excluirButtonActionPerformed
+
+    private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
+        // TODO add your handling code here:
+        limpaCampo();
+        completaTabela();
+    }//GEN-LAST:event_limparButtonActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton excluirButton;
@@ -186,6 +217,7 @@ public class Categoria extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane js;
+    private javax.swing.JButton limparButton;
     private javax.swing.JTextField nomeText;
     private javax.swing.JButton novoButton;
     private javax.swing.JButton sairButton;
@@ -264,5 +296,21 @@ public class Categoria extends javax.swing.JInternalFrame {
         catDao.update(cat);
         completaTabela();
        // System.out.println("OLA");
+    }
+    public void excCategoria(){
+        model.bean.Categoria cat= this.pegaCategoria();
+        System.out.println("ID "+cat.getId());
+         if(cat.getId()==0){
+            JOptionPane.showMessageDialog(this, "Selecione uma categoria");
+            return;
+        }
+         try {
+             catDao.deletar(cat.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Nao foi possivel excluir:\n"+
+                    "Tavez tenha algum produto registrado na mesma.");
+        }
+        
+        completaTabela();
     }
 }

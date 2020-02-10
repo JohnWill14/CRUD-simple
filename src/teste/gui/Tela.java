@@ -19,7 +19,7 @@ public class Tela {
     public static void main(String[] args) {
         lookTest();
         TelaPrincipal tela=new TelaPrincipal();
-        tela.setSize(592, 594);
+        tela.setSize( 900,585);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.setVisible(true);
     }
