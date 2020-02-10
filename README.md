@@ -3,10 +3,10 @@
 ## Objetivo
 
 <p> A história desse projeto é bem engraçada, meu objetivo era iniciar os estudos com JPA.
-Porém, para assegurar que estava dominando, diz "manjando" do assunto :), resolvir seguir
-um <a href="https://www.youtube.com/playlist?list=PLWd_VnthxxLevWyNp4Qsvhog2iFbwmPwy" target="_blank">tutorial</a> no YouTube onde era apresentado a conexão com banco aravés do JDBC e que utilizava
-<i>'querys'<i> para trabalhar com os dados do banco. Logo, fiquei empolgado e quiz dar uma cara mais
-        amigavel para o sistema criando, assim, uma interface gráfica.</p>
+Porém, para assegurar que estava dominando, diz "manjando" do assunto :), resolvi seguir
+um <a href="https://www.youtube.com/playlist?list=PLWd_VnthxxLevWyNp4Qsvhog2iFbwmPwy" target="_blank">tutorial</a> no YouTube onde era apresentado a conexão com banco através do JDBC e que utilizava
+<i>'querys'<i> para trabalhar com os dados do banco. Logo, fiquei empolgado e quis dar uma cara mais
+        amigável para o sistema criando, assim, uma interface gráfica.</p>
 
 ## Como foi feito
 
@@ -58,24 +58,26 @@ está no arquivo <i>"descompila.sql"</i>.
 ## Comentários
 
 <p>
-    Para deixar o tema escuro tive de instalar o <i>jar</i> darcula.
+    Para deixar o tema escuro tive que instalar o <i>jar</i> darcula.
 </p>
 <p>
     E com o seguinte método deixei o tema todo escuro:
 </p>
+
 ```JAVA
- private static void lookTest(){
-        try {
-            javax.swing.UIManager.setLookAndFeel(new com.bulenkov.darcula.DarculaLaf());
-        } catch (UnsupportedLookAndFeelException ex) {
-            System.out.println(ex.getMessage());
-        }
-        catch(ExceptionInInitializerError ex){
-            System.out.println("Erro inicializar => "+ex.getMessage());
-            
-        }
+private static void lookTest(){
+    try {
+        javax.swing.UIManager.setLookAndFeel(new com.bulenkov.darcula.DarculaLaf());
+    } catch (UnsupportedLookAndFeelException ex) {
+        System.out.println(ex.getMessage());
     }
+    catch(ExceptionInInitializerError ex){
+        System.out.println("Erro inicializar => "+ex.getMessage());
+        
+    }
+}
 ```
+
 <p>
     Se alguém encontrar um erro ou tiver uma dica crie um PR ou me envie um e-mail:
 <a href="mail:johnwill.v.2017@gmail.com">johnwill.v.2017@gmail.com</a>. Agradeceria e muito
